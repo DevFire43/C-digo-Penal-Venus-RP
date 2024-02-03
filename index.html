@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Calculadora Penal</title>
+    <script src="start.js"></script>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-image: url(./img/venus\ logo.png); /*alterar foto de fundo (não está alterada ;-;)*/
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+        }
+
+        h1 {
+            color: #333;
+        }
+
+        h3 {
+            color: #333;
+        }
+        
+        label {
+            display: block;
+            margin-bottom: 10px;
+            color: #555;
+        }
+
+        
+
+        button {
+            background-color: #4CAF50;
+            color: white;
+            padding: 10px 20px;
+            margin: 5px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            transition: background-color 1.9s;
+        }
+
+        button:hover {
+            background-color: #4585a0; /*#45a049*/
+        }
+
+        input {
+            width: 80%;
+            padding: 8px;
+            margin-bottom: 10px;
+            box-sizing: border-box;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .detalhes {
+            margin-top: 20px;
+            color: #333;
+            font-size: 18px;
+        }
+
+    </style>
+</head>
+<body><h1>Olá,
+    <script lang="javascript">
+        document.write(nome)
+    </script>
+</h1>
+    <h1>Calculadora Penal</h1>
+    <h3>Venus Police RP</h3>
+
+    <div id="crimesContainer"></div>
+
+    <button onclick="adicionarCrime()">Adicionar Crime</button>
+    <button onclick="calcularDetalhes()">Calcular Detalhes</button>
+
+    <div class="detalhes" id="detalhes"></div>
+
+    <script>
+        const crimes = [];
+
+        function adicionarCrime() {
+            const crimesContainer = document.getElementById("crimesContainer");
+            const index = crimes.length + 1;
+
+            const novoCrimeHTML = document.createElement("div");
+            novoCrimeHTML.innerHTML = `
+                <label for="crime${index}">Tipo de Crime:</label>
+                <select id="crime${index}">
+                    <option value="abuso">Abuso de autoridade</option>
+                    <option value="apologia">Apologia ao Crime</option>
+                    <option value="ameaca">Ameaça</option>
+                    <option value="associacao">Associação Criminosa</option>
+                    <option value="agrecao">Agressão</option>
+                    <option value="racha">Corrida ilegal</option>
+                    <option value="calunia">Calunia, difamação e ínjuria</option>
+                    <option value="desacato">Desacato Policial</option>
+                    <option value="desobediencia">Desobediência</option>
+                    <option value="estelionato">Estelionato</option>
+                    <option value="extorsao">Extorsão</option>
+                    <option value="estacionamento">Estacionar em local proibido</option>
+                    <option value="falso">Falso testemunho</option>
+                    <option value="falsidade">Falsidade ideológica</option>
+                    <option value="falsidade-doc">Falsidade de documentos</option>
+                    <option value="fuga">Fuga</option>
+                    <option value="furto">Furto</option>
+                    <option value="homicidio">Homícidio</option>
+                    <option value="homicidio-pm">Homícidio Policial</option>
+                    <option value="invasao">Invasão</option>
+                    <option value="multas">Multas pendentes</option>
+                    <option value="muni">Porte ilegal de munições</option>
+                    <option value="arma">Porte ilegal de arma (pistola)</option>
+                    <option value="arma-fuzil">Porte ilegal de arma (fuzil)</option>
+                    <option value="arma-pm">Porte ilegal de arma POLICIAL</option>
+                    <option value="roubo">Roubo</option>
+                    <option value="roubo-caixinha">Roubo a caixa eletrônico/registradora</option>
+                    <option value="roubo-residencia">Roubo a residencia</option>
+                    <option value="roubo-lojinha">Roubo a loja</option>
+                    <option value="droga">Tráfego de Drogas</option>
+                    <option value="suborno">Tentativa de SUBORNO</option>
+                    <option value="mascara">Uso de máscara</option>
+                    <option value="habilitacao">Direção perígosa</option>
+                    <option value="efeito">Dirigir sobre efeito de alcool e/ou drogas</option>
+                </select>
+            `;
+
+            crimesContainer.appendChild(novoCrimeHTML);
+            crimes.push(document.getElementById(`crime${index}`));
+        }
+
+        function calcularDetalhes() {
+            const detalhesContainer = document.getElementById("detalhes");
+            detalhesContainer.innerHTML = "";
+
+            let totalTempoCadeia = 0;
+            let totalMulta = 0;
+
+            for (let i = 0; i < crimes.length; i++) {
+                const crimeSelecionado = crimes[i].value;
+
+                let tempoCadeia = 0;
+                let multa = 0;
+
+                switch (crimeSelecionado) {
+                    case "ameaca":
+                        tempoCadeia = 15;
+                        multa = 5000;
+                        break;
+                    case "apologia":
+                        tempoCadeia = 5;
+                        multa = 10000;
+                        break;
+                    case "efeito":
+                        tempoCadeia = 5;
+                        multa = 10000;
+                        break;
+                    case "associacao":
+                        tempoCadeia = 20;
+                        multa = 20000;
+                        break;
+                    case "agrecao": 
+                        tempoCadeia = 10;
+                        multa = 5000;
+                        break;
+                    case "calunia":
+                        tempoCadeia = 30;
+                        multa = 20000
+                        break;
+                    case "desacato": 
+                        tempoCadeia = 10;
+                        multa = 15000
+                        break;
+                    case "desobediencia":
+                        tempoCadeia = 15;
+                        multa = 10000
+                        break;
+                    case "abuso": 
+                        tempoCadeia = 50;
+                        multa = 60000
+                        break;
+                    case "racha": 
+                        tempoCadeia = 10;
+                        multa = 10000
+                        break;
+                    case "estelionato":
+                        tempoCadeia = 25;
+                        multa = 20000
+                        break;
+                    case "extorsao":
+                        tempoCadeia = 15;
+                        multa = 15000
+                        break;
+                    case "estacionamento":
+                        tempoCadeia = 0;
+                        multa = 5000
+                        break;
+                    case "falso":
+                        tempoCadeia = 15;
+                        multa = 20000
+                        break;
+                    case "falsidade":
+                        tempoCadeia = 15;
+                        multa = 7000
+                        break;
+                    case "habilitacao":
+                        tempoCadeia = 0;
+                        multa = 5000
+                        break;
+                    case "falsidade-doc":
+                        tempoCadeia = 5;
+                        multa = 7000
+                        break;
+                    case "fuga":
+                        tempoCadeia = 10;
+                        multa = 8000
+                        break;
+                    case "furto":
+                        tempoCadeia = 5;
+                        multa = 10000
+                        break;
+                    case "homicidio":
+                        tempoCadeia = 30;
+                        multa = 50000
+                        break;
+                    case "homicidio-pm":
+                        tempoCadeia = 60;
+                        multa = 70000
+                        break;
+                    case "invasao":
+                        tempoCadeia = 15;
+                        multa = 10000
+                        break;
+                    case "multas":
+                        tempoCadeia = 0;
+                        multa = 1000
+                        break;
+                    case "muni":
+                        tempoCadeia = 20;
+                        multa = 25000
+                        break;
+                    case "arma":
+                        tempoCadeia = 45;
+                        multa = 20000
+                        break;
+                    case "arma-fuzil":
+                        tempoCadeia = 60;
+                        multa = 50000
+                        break;
+                    case "arma-pm":
+                        tempoCadeia = 60;
+                        multa = 50000
+                        break;
+                     case "roubo":
+                        tempoCadeia = 15;
+                        multa = 20000
+                        break;
+                    case "roubo-caixinha":
+                        tempoCadeia = 10;
+                        multa = 15000
+                        break;
+                    case "roubo-residencia":
+                        tempoCadeia = 25;
+                        multa = 25000
+                        break;
+                    case "roubo-lojinha":
+                        tempoCadeia = 25;
+                        multa = 30000
+                        break;
+                    case "mascara":
+                        tempoCadeia = 0;
+                        multa = 5000
+                        break;
+                    case "droga":
+                        tempoCadeia = 15;
+                        multa = 5000
+                        break;
+                    case "suborno":
+                        tempoCadeia = 15;
+                        multa = 30000
+                        break;
+                        default:
+                }
+
+                totalTempoCadeia += tempoCadeia;
+                totalMulta += multa;
+            }
+
+            const totalPena = totalTempoCadeia;
+            const valorFianca = 1.2 * totalMulta;
+
+            detalhesContainer.innerHTML = `
+                <p>Detalhes Totais:</p>
+                <p>Total de Tempo de Cadeia: ${totalTempoCadeia} meses</p>
+                <p>Total de Multa: R$ ${totalMulta.toFixed(2)}</p>
+                <p>Fiança Total: R$ ${valorFianca.toFixed(2)}</p>
+            `;
+        }
+    </script>
+    <div class="col-lg-4 text-lg-start">&copy;Desenvolvido por: <a href="https://wa.me/5544988270723">Caio Henrique (fire)</a></div>
+</body>
+</html>

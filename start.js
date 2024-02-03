@@ -1,0 +1,1 @@
+nome = window.prompt("Digite seu Nome antes de abrir a pagina")
